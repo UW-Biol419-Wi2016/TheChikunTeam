@@ -1,3 +1,24 @@
+%%Barranquillo Columbia Climate Data from NOAA
+figure
+plot(MNTM,TPCP);
+xlabel('Mean Monthly Temperature');
+ylabel('Total Precipitation');
+
+%%Sorting Barranquillo Data from Chikungunya Transmission Data
+cities = cell2table(location);
+
+%Preliminary Information for the Charleston, South Carolina dataset from NOAA
+figure;
+gscatter (data(:, 3), data(:,2));
+xlabel('Mean Monthly Temperature');
+ylabel('Total Precipitation');
+
+figure;
+gscatter (data(:, 3), data(:,2), data(:,4));
+xlabel('Mean Monthly Temperature');
+ylabel('Total Precipitation');
+
+
 %%PCA of Sorted Data
 %MultipleCityClimateData1 is a cell containing the precipitation,
 %temperature, and probability of local transmission for each reach.
