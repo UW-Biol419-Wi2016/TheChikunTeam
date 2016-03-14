@@ -1,0 +1,8 @@
+%%PCA of Sorted Data
+%MultipleCityClimateData1 is a cell containing the precipitation,
+%temperature, and probability of local transmission for each reach.
+MatData = cell2mat(MultipleCityClimateData1);
+[coeff, score, latent] = pca(MatData);
+mpca = cumsum(latent)/sum(latent);
+var95 = mpca>0.95;
+pca95 = sum(var95);
