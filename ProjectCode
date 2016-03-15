@@ -34,6 +34,18 @@ xlabel('First Principle Componant');
 ylabel('Second Principle Componant'); 
 title('Data Projected onto the Principal Component Directions');
 
+%Another alternative. %%
+% View the data and the original variables in the space of the first three
+% principal components.
+[coeff, score, latent] = princomp(MatData);
+mpca = cumsum(latent)/sum(latent);
+var95 = mpca>0.95;
+pca95 = sum(var95);
+vbls = {'Precipitation','Temperature','Transmission'};
+figure
+biplot(coeff,'scores',score,'varlabels',vbls);
+
+%Graphs looking at trends in data%
 readtable('bydate_multicities.xlsx');
 
 %Monthly Precipitation (TCPC) by location, in inches.
