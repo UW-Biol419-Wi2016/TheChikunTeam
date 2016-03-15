@@ -18,26 +18,6 @@ gscatter (data(:, 3), data(:,2), data(:,4));
 xlabel('Mean Monthly Temperature');
 ylabel('Total Precipitation');
 
-%%Barranquillo Columbia Climate Data from NOAA
-figure
-plot(MNTM,TPCP);
-xlabel('Mean Monthly Temperature');
-ylabel('Total Precipitation');
-
-%%Sorting Barranquillo Data from Chikungunya Transmission Data
-cities = cell2table(location);
-
-%Preliminary Information for the Charleston, South Carolina dataset from NOAA
-figure;
-gscatter (data(:, 3), data(:,2));
-xlabel('Mean Monthly Temperature');
-ylabel('Total Precipitation');
-
-figure;
-gscatter (data(:, 3), data(:,2), data(:,4));
-xlabel('Mean Monthly Temperature');
-ylabel('Total Precipitation');
-
 %%PCA of Sorted Data
 %MultipleCityClimateData1 is a cell containing the precipitation,
 %temperature, and probability of local transmission for each reach.
@@ -46,3 +26,10 @@ MatData = cell2mat(MultipleCityClimateData1);
 mpca = cumsum(latent)/sum(latent);
 var95 = mpca>0.95;
 pca95 = sum(var95);
+
+%Graph of principle components 1 and 2. 
+figure
+scatter(score(:, 1), score(:, 2),'filled');
+xlabel('First Principle Componant'); 
+ylabel('Second Principle Componant'); 
+title('Data Projected onto the Principal Component Directions');
