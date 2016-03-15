@@ -33,3 +33,118 @@ scatter(score(:, 1), score(:, 2),'filled');
 xlabel('First Principle Componant'); 
 ylabel('Second Principle Componant'); 
 title('Data Projected onto the Principal Component Directions');
+
+readtable('bydate_multicities.xlsx');
+
+%Monthly Precipitation (TCPC) by location, in inches.
+Dates = x2mdate((data(:,1)), 1,'datetime');
+
+plot(Dates, data(:,(2:7)));
+title('Mean Monthly Precipitation by Location')
+xlabel('Time');
+ylabel('Mean Monthly Precipitation, in inches');
+title('Mean Monthly Preciptation by Location');
+
+%Monthly Temperature (MNMT) by location, in tenths of
+%a degree in Celsius).
+Dates = x2mdate((data(:,1)), 1,'datetime');
+
+plot(Dates, data(:,(8:13)));
+title('Mean Monthly Temperature by Location')
+xlabel('Time');
+ylabel('Mean Monthly Temperature, in inches');
+title('Mean Monthly Temperature by Location');
+
+%Columbia trend lines comparing precipitation, temperature, 
+%and local transmission probabilities for Chikungunya virus.
+x = Dates;
+ColTPCPMNTM = [data(:,2) ((data(:,8)./10)*(9/5)+32)];
+Coltrans = [data(:,14)*100];
+
+figure
+[hAx,hLine1,hLine2] = plotyy(x,ColTPCPMNTM,[x'],[Coltrans']);
+title('Location: Columbia')
+xlabel('Time');
+zlabel('Local Tranmission of Chikungunya Virus (%)');
+legend('Precipitation, in inches', 'Temperature, in Farenheit',...
+    'Local Transmission Probability');
+
+%Minneapolis, Minnesota trend lines comparing precipitation, temperature, 
+%and local transmission probabilities for Chikungunya virus.
+x = Dates;
+MNTPCPMNTM = [data(:,3) ((data(:,9)./10)*(9/5)+32)];
+MNtrans = [data(:,15)*100];
+
+figure
+[hAx,hLine1,hLine2] = plotyy(x,MNTPCPMNTM,[x'],[MNtrans']);
+title('Location: Minneapolis, Minnesota')
+xlabel('Time');
+zlabel('Local Tranmission of Chikungunya Virus (%)');
+legend('Precipitation, in inches', 'Temperature, in Farenheit',...
+    'Local Transmission Probability');
+
+%Pensacola, Florida trend lines comparing precipitation, temperature, 
+%and local transmission probabilities for Chikungunya virus.
+x = Dates;
+FLTPCPMNTM = [data(:,4) ((data(:,10)./10)*(9/5)+32)];
+FLtrans = [data(:,16)*100];
+
+figure
+[hAx,hLine1,hLine2] = plotyy(x,FLTPCPMNTM,[x'],[FLtrans']);
+title('Location: Pensacola, Florida')
+xlabel('Time');
+zlabel('Local Tranmission of Chikungunya Virus (%)');
+legend('Precipitation, in inches', 'Temperature, in Farenheit',...
+    'Local Transmission Probability');
+
+%Phoenix, Arizona trend lines comparing precipitation, temperature, 
+%and local transmission probabilities for Chikungunya virus.
+x = Dates;
+AZTPCPMNTM = [data(:,5) ((data(:,11)./10)*(9/5)+32)];
+AZtrans = [data(:,17)*100];
+
+figure
+[hAx,hLine1,hLine2] = plotyy(x,AZTPCPMNTM,[x'],[AZtrans']);
+title('Location: Phoenix, Arizona')
+xlabel('Time');
+zlabel('Local Tranmission of Chikungunya Virus (%)');
+legend('Precipitation, in inches', 'Temperature, in Farenheit',...
+    'Local Transmission Probability');
+
+%Seattle, Washington trend lines comparing precipitation, temperature, 
+%and local transmission probabilities for Chikungunya virus.
+x = Dates;
+WATPCPMNTM = [data(:,6) ((data(:,12)./10)*(9/5)+32)];
+WAtrans = [data(:,18)*100];
+
+figure
+[hAx,hLine1,hLine2] = plotyy(x,WATPCPMNTM,[x'],[WAtrans']);
+title('Location: Seattle, Washington')
+xlabel('Time');
+zlabel('Local Tranmission of Chikungunya Virus (%)');
+legend('Precipitation, in inches', 'Temperature, in Farenheit',...
+    'Local Transmission Probability');
+
+%Charleston, South Carolina trend lines comparing precipitation, temperature, 
+%and local transmission probabilities for Chikungunya virus.
+x = Dates;
+SCTPCPMNTM = [data(:,7) ((data(:,13)./10)*(9/5)+32)];
+SCtrans = [data(:,19)*100];
+
+figure
+[hAx,hLine1,hLine2] = plotyy(x,SCTPCPMNTM,[x'],[SCtrans']);
+title('Location: Charleston, South Carolina')
+xlabel('Time');
+zlabel('Local Tranmission of Chikungunya Virus (%)');
+legend('Precipitation, in inches', 'Temperature, in Farenheit',...
+    'Local Transmission Probability');
+    
+    
+%'Misc Code, not used------------------------------.
+%scatter3(Dates, [data(:,2),data(:,8), data(:,14)]);
+%polyfit(data(:,2),data(:,8),data(:,14));
+%scatter3(Dates, [data(:,3),data(:,9), data(:,15)]);
+%scatter3(Dates, [data(:,4),data(:,10), data(:,16)]);
+%scatter3(Dates, [data(:,5),data(:,11), data(:,17)]);
+%scatter3(Dates, [data(:,6),data(:,12), data(:,18)]);
+%scatter3(Dates, [data(:,7),data(:,13), data(:,19)]);
